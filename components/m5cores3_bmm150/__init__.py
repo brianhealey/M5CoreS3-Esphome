@@ -8,11 +8,13 @@ from esphome.const import (
     UNIT_MICROTESLA,
     UNIT_DEGREES,
     ICON_MAGNET,
-    ICON_COMPASS,
 )
 
 DEPENDENCIES = ["board_m5cores3"]
 AUTO_LOAD = ["sensor"]
+
+# Custom icons
+ICON_DIRECTION_ARROW = "mdi:compass"  # Using compass icon for heading
 
 m5cores3_bmm150_ns = cg.esphome_ns.namespace("m5cores3_bmm150")
 M5CoreS3BMM150 = m5cores3_bmm150_ns.class_("M5CoreS3BMM150", cg.Component)
@@ -46,7 +48,7 @@ CONFIG_SCHEMA = cv.Schema({
     cv.Optional(CONF_HEADING): sensor.sensor_schema(
         unit_of_measurement=UNIT_DEGREES,
         accuracy_decimals=1,
-        icon=ICON_COMPASS,
+        icon=ICON_DIRECTION_ARROW,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
 }).extend(cv.COMPONENT_SCHEMA)
