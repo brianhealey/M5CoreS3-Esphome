@@ -8,6 +8,13 @@ namespace m5cores3_pmu {
 static const char *TAG = "m5cores3_pmu";
 
 void M5CoreS3PMU::setup() {
+  // Initialize M5 first if not already initialized
+  auto cfg = M5.config();
+  cfg.clear_display = false;  // Don't clear display if already initialized
+  cfg.output_power  = true;   // Enable power output control
+  M5.begin(cfg);
+
+  // Now try to initialize AXP2101
   if (!M5.Power.Axp2101.begin()) {
     ESP_LOGE(TAG, "Failed to initialize AXP2101!");
     this->mark_failed();
