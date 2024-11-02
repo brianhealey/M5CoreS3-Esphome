@@ -1,15 +1,13 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
-from esphome.components import sensor, binary_sensor, number, switch
+from esphome.components import sensor, binary_sensor
 from esphome.const import (
     CONF_ID,
     DEVICE_CLASS_VOLTAGE,
-    DEVICE_CLASS_CURRENT,
-    DEVICE_CLASS_TEMPERATURE,
     DEVICE_CLASS_BATTERY,
+    DEVICE_CLASS_TEMPERATURE,
     STATE_CLASS_MEASUREMENT,
     UNIT_VOLT,
-    UNIT_AMPERE,
     UNIT_PERCENT,
     UNIT_CELSIUS,
 )
@@ -20,13 +18,11 @@ AUTO_LOAD = ["sensor", "binary_sensor"]
 m5cores3_pmu_ns = cg.esphome_ns.namespace("m5cores3_pmu")
 M5CoreS3PMU = m5cores3_pmu_ns.class_("M5CoreS3PMU", cg.Component)
 
-# Define our own configuration constants
+# Configuration options
 CONF_BATTERY_VOLTAGE = "battery_voltage"
-CONF_BATTERY_CURRENT = "battery_current"
 CONF_BATTERY_LEVEL = "battery_level"
-CONF_USB_VOLTAGE = "usb_voltage"
-CONF_USB_CURRENT = "usb_current"
 CONF_TEMPERATURE = "temperature"
+CONF_USB_VOLTAGE = "usb_voltage"
 CONF_CHARGING = "charging"
 CONF_BATTERY_PRESENT = "battery_present"
 CONF_USB_PRESENT = "usb_present"
@@ -37,12 +33,6 @@ CONFIG_SCHEMA = cv.Schema({
         unit_of_measurement=UNIT_VOLT,
         accuracy_decimals=3,
         device_class=DEVICE_CLASS_VOLTAGE,
-        state_class=STATE_CLASS_MEASUREMENT,
-    ),
-    cv.Optional(CONF_BATTERY_CURRENT): sensor.sensor_schema(
-        unit_of_measurement=UNIT_AMPERE,
-        accuracy_decimals=3,
-        device_class=DEVICE_CLASS_CURRENT,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
     cv.Optional(CONF_BATTERY_LEVEL): sensor.sensor_schema(
@@ -63,12 +53,6 @@ CONFIG_SCHEMA = cv.Schema({
         device_class=DEVICE_CLASS_VOLTAGE,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
-    cv.Optional(CONF_USB_CURRENT): sensor.sensor_schema(
-        unit_of_measurement=UNIT_AMPERE,
-        accuracy_decimals=3,
-        device_class=DEVICE_CLASS_CURRENT,
-        state_class=STATE_CLASS_MEASUREMENT,
-    ),
     cv.Optional(CONF_CHARGING): binary_sensor.binary_sensor_schema(),
     cv.Optional(CONF_BATTERY_PRESENT): binary_sensor.binary_sensor_schema(),
     cv.Optional(CONF_USB_PRESENT): binary_sensor.binary_sensor_schema(),
@@ -82,10 +66,6 @@ async def to_code(config):
         sens = await sensor.new_sensor(config[CONF_BATTERY_VOLTAGE])
         cg.add(var.set_battery_voltage_sensor(sens))
 
-    if CONF_BATTERY_CURRENT in config:
-        sens = await sensor.new_sensor(config[CONF_BATTERY_CURRENT])
-        cg.add(var.set_battery_current_sensor(sens))
-
     if CONF_BATTERY_LEVEL in config:
         sens = await sensor.new_sensor(config[CONF_BATTERY_LEVEL])
         cg.add(var.set_battery_level_sensor(sens))
@@ -97,10 +77,6 @@ async def to_code(config):
     if CONF_USB_VOLTAGE in config:
         sens = await sensor.new_sensor(config[CONF_USB_VOLTAGE])
         cg.add(var.set_usb_voltage_sensor(sens))
-
-    if CONF_USB_CURRENT in config:
-        sens = await sensor.new_sensor(config[CONF_USB_CURRENT])
-        cg.add(var.set_usb_current_sensor(sens))
 
     if CONF_CHARGING in config:
         sens = await binary_sensor.new_binary_sensor(config[CONF_CHARGING])
