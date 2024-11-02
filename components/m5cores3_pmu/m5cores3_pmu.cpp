@@ -9,6 +9,15 @@ static const char *TAG = "m5cores3_pmu";
 
 void M5CoreS3PMU::setup() {
   ESP_LOGI(TAG, "PMU component setup() with priority %.1f", get_setup_priority());
+
+  auto cfg = M5.config();
+  cfg.clear_display = true;    // Clear display on init
+  cfg.output_power = true;     // Enable power control
+  cfg.internal_imu = true;    // Don't initialize IMU by default
+  cfg.internal_rtc = true;    // Don't initialize RTC by default
+
+  M5.begin(cfg);
+
   // Initialize AXP2101
   if (!M5.Power.Axp2101.begin()) {
     ESP_LOGE(TAG, "Failed to initialize AXP2101!");
