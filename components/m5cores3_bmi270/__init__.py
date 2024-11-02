@@ -4,11 +4,10 @@ import esphome.config_validation as cv
 from esphome.components import sensor
 from esphome.const import (
     CONF_ID,
-    DEVICE_CLASS_ACCELERATION,
-    DEVICE_CLASS_GYROSCOPE,
     STATE_CLASS_MEASUREMENT,
-    UNIT_METERS_PER_SECOND_SQUARED,
-    UNIT_DEGREES_PER_SECOND,
+    ICON_MOTION_SENSOR,
+    UNIT_METER_PER_SECOND_SQUARED,
+    UNIT_DEGREE_PER_SECOND,
 )
 
 DEPENDENCIES = ["board_m5cores3"]
@@ -28,39 +27,39 @@ CONF_GYRO_Z = "gyro_z"
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(M5CoreS3BMI270),
     cv.Optional(CONF_ACCEL_X): sensor.sensor_schema(
-        unit_of_measurement=UNIT_METERS_PER_SECOND_SQUARED,
+        unit_of_measurement=UNIT_METER_PER_SECOND_SQUARED,
         accuracy_decimals=3,
-        device_class=DEVICE_CLASS_ACCELERATION,
+        icon=ICON_MOTION_SENSOR,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
     cv.Optional(CONF_ACCEL_Y): sensor.sensor_schema(
-        unit_of_measurement=UNIT_METERS_PER_SECOND_SQUARED,
+        unit_of_measurement=UNIT_METER_PER_SECOND_SQUARED,
         accuracy_decimals=3,
-        device_class=DEVICE_CLASS_ACCELERATION,
+        icon=ICON_MOTION_SENSOR,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
     cv.Optional(CONF_ACCEL_Z): sensor.sensor_schema(
-        unit_of_measurement=UNIT_METERS_PER_SECOND_SQUARED,
+        unit_of_measurement=UNIT_METER_PER_SECOND_SQUARED,
         accuracy_decimals=3,
-        device_class=DEVICE_CLASS_ACCELERATION,
+        icon=ICON_MOTION_SENSOR,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
     cv.Optional(CONF_GYRO_X): sensor.sensor_schema(
-        unit_of_measurement=UNIT_DEGREES_PER_SECOND,
+        unit_of_measurement=UNIT_DEGREE_PER_SECOND,
         accuracy_decimals=3,
-        device_class=DEVICE_CLASS_GYROSCOPE,
+        icon=ICON_MOTION_SENSOR,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
     cv.Optional(CONF_GYRO_Y): sensor.sensor_schema(
-        unit_of_measurement=UNIT_DEGREES_PER_SECOND,
+        unit_of_measurement=UNIT_DEGREE_PER_SECOND,
         accuracy_decimals=3,
-        device_class=DEVICE_CLASS_GYROSCOPE,
+        icon=ICON_MOTION_SENSOR,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
     cv.Optional(CONF_GYRO_Z): sensor.sensor_schema(
-        unit_of_measurement=UNIT_DEGREES_PER_SECOND,
+        unit_of_measurement=UNIT_DEGREE_PER_SECOND,
         accuracy_decimals=3,
-        device_class=DEVICE_CLASS_GYROSCOPE,
+        icon=ICON_MOTION_SENSOR,
         state_class=STATE_CLASS_MEASUREMENT,
     ),
 }).extend(cv.COMPONENT_SCHEMA)
