@@ -1,4 +1,4 @@
-#include "bmm150.h"
+#include "m5cores3_bmm150.h"
 #include "esphome/core/log.h"
 #include <math.h>
 
