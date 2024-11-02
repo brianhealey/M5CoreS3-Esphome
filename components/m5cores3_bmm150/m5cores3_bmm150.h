@@ -26,6 +26,8 @@ namespace esphome {
             sensor::Sensor *mag_y_sensor_{nullptr};
             sensor::Sensor *mag_z_sensor_{nullptr};
             sensor::Sensor *heading_sensor_{nullptr};
+
+            bool mag_initialized_{false};
         };
 
     }  // namespace m5cores3_bmm150
