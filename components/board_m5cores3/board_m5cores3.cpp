@@ -8,6 +8,7 @@ static const char *TAG = "board.m5cores3";
 
 void BoardM5CoreS3::setup() {
     ESP_LOGI(TAG, "Setting up M5Stack Core S3");
+    ESP_LOGD(TAG, "Board component setup() with priority %.1f", get_setup_priority());
     auto cfg = M5.config();
     cfg.clear_display = true;    // Clear display on init
     cfg.output_power = true;     // Enable power control
