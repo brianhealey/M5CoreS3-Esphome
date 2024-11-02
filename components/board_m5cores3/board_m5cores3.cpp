@@ -14,10 +14,7 @@ void BoardM5CoreS3::setup() {
     cfg.internal_imu = true;    // Don't initialize IMU by default
     cfg.internal_rtc = true;    // Don't initialize RTC by default
 
-    if (!M5.begin(cfg)) {
-        ESP_LOGE(TAG, "Failed to initialize M5Stack!");
-        return;
-    }
+    M5.begin(cfg);
 
     initialized_ = true;
     ESP_LOGI(TAG, "M5Stack Core S3 initialized successfully");
