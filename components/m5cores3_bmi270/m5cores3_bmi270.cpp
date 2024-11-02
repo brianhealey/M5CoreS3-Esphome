@@ -1,4 +1,4 @@
-#include "bmi270.h"
+#include "m5cores3_bmi270.h"
 #include "esphome/core/log.h"
 
 namespace esphome {
