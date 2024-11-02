@@ -13,7 +13,7 @@ from esphome.components.esp32.const import (
 )
 
 CODEOWNERS = ["@jesserockz"]
-DEPENDENCIES = ["esp32"]
+DEPENDENCIES = ["esp32","board_m5cores3"]
 MULTI_CONF = True
 
 CONF_I2S_DOUT_PIN = "i2s_dout_pin"

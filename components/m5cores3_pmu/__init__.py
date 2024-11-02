@@ -12,7 +12,7 @@ from esphome.const import (
     UNIT_CELSIUS,
 )
 
-DEPENDENCIES = []
+DEPENDENCIES = ["board_m5cores3"]
 AUTO_LOAD = ["sensor", "binary_sensor"]
 
 m5cores3_pmu_ns = cg.esphome_ns.namespace("m5cores3_pmu")

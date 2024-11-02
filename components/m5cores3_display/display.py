@@ -20,7 +20,7 @@ from esphome.const import (
 )
 
 # DEPENDENCIES = ["spi"]
-
+DEPENDENCIES = ["board_m5cores3"]
 
 def AUTO_LOAD():
     if CORE.is_esp32:

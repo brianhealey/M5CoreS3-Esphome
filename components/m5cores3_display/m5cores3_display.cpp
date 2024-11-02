@@ -30,7 +30,6 @@ namespace m5cores3_display {
 void M5CoreS3Display::setup() {
   ESP_LOGI(TAG, "setup");
 
-  M5.begin();
   _canvas = new LGFX_Sprite(&M5.Display);
   _canvas->setPsram(true);
   _canvas->createSprite(M5.Display.width(), M5.Display.height());

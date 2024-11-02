@@ -13,7 +13,7 @@ namespace esphome {
   public:
    void setup() override;
    void dump_config() override;
-   float get_setup_priority() const override { return setup_priority::IO; }
+   float get_setup_priority() const override { return setup_priority::BUS; }
    void loop() override;
 
    // Sensor setters
@@ -32,7 +32,6 @@ namespace esphome {
    void power_off();
 
   protected:
-   // Internal methods
    void update_sensors_();
 
    // Sensor pointers
