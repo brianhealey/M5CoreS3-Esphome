@@ -1,16 +1,12 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
-from esphome.components import sensor, binary_sensor
+from esphome.components import sensor, binary_sensor, number, switch
 from esphome.const import (
-    CONF_BATTERY_VOLTAGE,
-    CONF_BATTERY_CURRENT,
-    CONF_BATTERY_LEVEL,
-    CONF_TEMPERATURE,
     CONF_ID,
     DEVICE_CLASS_VOLTAGE,
     DEVICE_CLASS_CURRENT,
-    DEVICE_CLASS_BATTERY,
     DEVICE_CLASS_TEMPERATURE,
+    DEVICE_CLASS_BATTERY,
     STATE_CLASS_MEASUREMENT,
     UNIT_VOLT,
     UNIT_AMPERE,
@@ -24,8 +20,13 @@ AUTO_LOAD = ["sensor", "binary_sensor"]
 m5cores3_pmu_ns = cg.esphome_ns.namespace("m5cores3_pmu")
 M5CoreS3PMU = m5cores3_pmu_ns.class_("M5CoreS3PMU", cg.Component)
 
+# Define our own configuration constants
+CONF_BATTERY_VOLTAGE = "battery_voltage"
+CONF_BATTERY_CURRENT = "battery_current"
+CONF_BATTERY_LEVEL = "battery_level"
 CONF_USB_VOLTAGE = "usb_voltage"
 CONF_USB_CURRENT = "usb_current"
+CONF_TEMPERATURE = "temperature"
 CONF_CHARGING = "charging"
 CONF_BATTERY_PRESENT = "battery_present"
 CONF_USB_PRESENT = "usb_present"
